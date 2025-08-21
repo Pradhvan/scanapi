@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import datetime
-import logging
 import pathlib
 import webbrowser
 
@@ -46,18 +45,16 @@ class Reporter:
         with open(self.output_path, "w", newline="\n") as doc:
             doc.write(content)
 
-        logger.info("\nThe documentation was generated successfully.")
-        logger.info(f"It is available at {self.output_path.resolve().as_uri()}")
-
-    def open_report_in_browser(self):
-        """Open the results file on a browser"""
-        webbrowser.open(self.output_path.resolve().as_uri())
         write_report_path(self.output_path.resolve().as_uri())
 
         if open_in_browser:
             self._open_in_browser()
 
     def _open_in_browser(self):
+        """Open the results file on a browser"""
+        webbrowser.open(self.output_path.resolve().as_uri())
+
+    def open_report_in_browser(self):
         """Open the results file on a browser"""
         webbrowser.open(self.output_path.resolve().as_uri())
 
